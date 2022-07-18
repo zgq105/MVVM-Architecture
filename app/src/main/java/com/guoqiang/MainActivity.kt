@@ -3,6 +3,7 @@ package com.guoqiang
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.guoqiang.ui.main.MainFragment
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +15,5 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
-
-        //master
     }
 }
