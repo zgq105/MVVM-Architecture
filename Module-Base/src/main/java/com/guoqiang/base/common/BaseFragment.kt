@@ -1,4 +1,4 @@
-package com.guoqiang.base.ui
+package com.guoqiang.base.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.guoqiang.base.widget.LoadingDialog
 
 /**
  * author: zgq
@@ -15,6 +16,7 @@ import androidx.viewbinding.ViewBinding
  */
 abstract class BaseFragment<V : ViewBinding> : Fragment() {
     protected var binding: V? = null
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +26,12 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         val binding = onCreateBinding(inflater, container, savedInstanceState)
         this.binding = binding
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadingDialog = LoadingDialog(this.requireContext(), false)
+        initData()
     }
 
     @CallSuper
@@ -37,4 +45,23 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): V
+
+    /**
+     * show 加载中
+     */
+    protected fun showLoading() {
+        loadingDialog.showDialog(this.requireContext(), false)
+    }
+
+    /**
+     * 子类实现业务逻辑
+     */
+    abstract fun initData()
+
+    /**
+     * dismiss loading dialog
+     */
+    protected fun dismissLoading() {
+        loadingDialog.dismissDialog()
+    }
 }

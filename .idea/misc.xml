@@ -6,6 +6,8 @@
         <entry key="../../.gradle/caches/transforms-3/34e1a1a860a9c00a62a51b0cb575b4ff/transformed/material-1.4.0/res/drawable/design_fab_background.xml" value="0.145" />
         <entry key="../../.gradle/caches/transforms-3/34e1a1a860a9c00a62a51b0cb575b4ff/transformed/material-1.4.0/res/drawable/ic_mtrl_checked_circle.xml" value="0.145" />
         <entry key="Module-Base/src/main/res/drawable/custom_toast_backgroud_box.xml" value="0.164" />
+        <entry key="Module-Base/src/main/res/drawable/shape_load_bg.xml" value="0.109" />
+        <entry key="Module-Base/src/main/res/layout/layout_loading_view.xml" value="0.23802083333333332" />
         <entry key="Module-Base/src/main/res/layout/toast_layout.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.23802083333333332" />

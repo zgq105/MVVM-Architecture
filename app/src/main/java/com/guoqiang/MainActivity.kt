@@ -3,6 +3,7 @@ package com.guoqiang
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.guoqiang.ui.main.MainFragment
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +17,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         //dev
+        Objects.equals("1",1)
     }
 }
