@@ -4,6 +4,7 @@
     package="com.guoqiang">
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,7 @@
         android:theme="@style/Theme.MVVMArchitecture"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity5"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.MVVMArchitecture.NoActionBar">
@@ -24,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity3"/>
     </application>
 
 </manifest>

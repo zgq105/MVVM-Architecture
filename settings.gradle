@@ -14,4 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MVVM-Architecture"
 include ':app'
-include ':Module-Base'
+include ':module-base'
+include ':module-bussess-common'

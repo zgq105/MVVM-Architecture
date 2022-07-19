@@ -6,27 +6,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.alibaba.android.arouter.launcher.ARouter
+import com.guoqiang.MainActivity3
 import com.guoqiang.R
+import com.guoqiang.base.common.BaseFragment
+import com.guoqiang.databinding.FragmentMainBinding
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+    private fun initListener() {
+        binding?.message?.setOnClickListener {
+            ARouter.getInstance().build(MainActivity3.PATH).navigation()
+        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onCreateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): FragmentMainBinding {
+        return FragmentMainBinding.inflate(inflater, container, false)
+    }
+
+    override fun initData() {
+        initListener()
     }
 
 }

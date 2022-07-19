@@ -7,9 +7,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.guoqiang.MainActivity3.Companion.PATH
 import com.guoqiang.databinding.ActivityMain3Binding
 
+@Route(path = PATH)
 class MainActivity3 : AppCompatActivity() {
+
+    companion object{
+        const val PATH = "/myapp/activity3"
+    }
 
     private lateinit var binding: ActivityMain3Binding
 
