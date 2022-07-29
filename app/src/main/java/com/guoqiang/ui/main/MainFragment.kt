@@ -20,7 +20,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun initListener() {
-        binding?.message?.setOnClickListener {
+        binding.message.setOnClickListener {
             ARouter.getInstance().build(MainActivity3.PATH).navigation()
         }
     }

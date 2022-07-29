@@ -16,3 +16,4 @@ rootProject.name = "MVVM-Architecture"
 include ':app'
 include ':module-base'
 include ':module-bussess-common'
+include ':module-user'

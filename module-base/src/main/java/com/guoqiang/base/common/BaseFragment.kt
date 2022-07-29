@@ -15,14 +15,14 @@ import com.guoqiang.base.widget.LoadingDialog
  * destcription:
  */
 abstract class BaseFragment<V : ViewBinding> : Fragment() {
-    protected var binding: V? = null
+    protected lateinit var binding: V
     private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = onCreateBinding(inflater, container, savedInstanceState)
         this.binding = binding
         return binding.root
@@ -37,7 +37,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
     @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
     }
 
     abstract fun onCreateBinding(

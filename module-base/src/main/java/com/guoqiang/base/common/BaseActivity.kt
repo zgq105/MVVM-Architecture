@@ -24,8 +24,12 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
         setContentView(binding.root)
         loadingDialog = LoadingDialog(this, false)
 
+        initView(savedInstanceState)
+        initListener()
         initData()
     }
+
+    abstract fun initView(savedInstanceState: Bundle?)
 
     /**
      * 子类实现业务逻辑
@@ -33,6 +37,8 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     abstract fun initData()
 
     abstract fun createBinding(): V
+
+    open fun initListener() {}
 
     /**
      * show 加载中

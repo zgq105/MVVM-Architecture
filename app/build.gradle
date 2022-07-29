@@ -56,6 +56,7 @@ android {
 
         implementation project(path: ':module-bussess-common')
         implementation project(path: ':module-base')
+        implementation project(path: ':module-user')
         kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 
     }

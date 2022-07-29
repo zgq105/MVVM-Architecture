@@ -8,9 +8,19 @@ buildscript{
     ext.arouter_api_version = "1.5.2"
     ext.arouter_compiler_version = "1.5.2"
     ext.arouter_register_version = "1.0.2"
+    def hit_version = "2.42"
+    ext.hilt_plugin_version = hit_version
+    ext.hilt_compiler_version = hit_version
+    ext.hilt_version = hit_version
+    ext.gson_version = "2.9.0"
+    ext.okhttp_logging_version = "4.10.0"
+    ext.viewmodel_ktx_version = "2.5.1"
+    ext.fragment_ktx_version = "1.4.0"
+    ext.activity_ktx_version = "1.4.0"
 
     dependencies {
         classpath "com.alibaba:arouter-register:$arouter_register_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_plugin_version"
     }
 
 }

@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/menu/main_activity4.xml" value="0.23802083333333332" />
         <entry key="module-base/src/main/res/layout/fragment_blank.xml" value="0.22395833333333334" />
+        <entry key="module-user/src/main/res/layout/activity_login.xml" value="0.1" />
       </map>
     </option>
   </component>
