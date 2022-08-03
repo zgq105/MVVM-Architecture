@@ -29,15 +29,15 @@ interface UserService {
      * 登录
      */
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("login")
     suspend fun login(@Field("username") username: String, @Field("password") password: String): BaseResponse<LoginEntity>
 
 
     companion object {
-        private const val BASE_URL = "https://api.unsplash.com/"
+        private const val BASE_URL = ""
 
         fun create(): UserService {
-            return RetrofitManager.create(UserService::class.java, BASE_URL)
+            return RetrofitManager.create(UserService::class.java)
         }
     }
 

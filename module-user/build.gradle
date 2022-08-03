@@ -46,6 +46,11 @@ android {
     }
 
     resourcePrefix = 'user_'
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
 }
 
 dependencies {
@@ -65,4 +70,6 @@ dependencies {
 
     kapt "com.google.dagger:hilt-android-compiler:$hilt_compiler_version"
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
 }

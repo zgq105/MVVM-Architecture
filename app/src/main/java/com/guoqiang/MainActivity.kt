@@ -7,9 +7,7 @@ import com.guoqiang.base.common.BaseActivity
 import com.guoqiang.business.common.ARouterConfig
 import com.guoqiang.databinding.ActivityMainBinding
 import com.guoqiang.ui.main.MainFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity: BaseActivity<ActivityMainBinding>() {
     override fun initData() {
         supportFragmentManager.beginTransaction()

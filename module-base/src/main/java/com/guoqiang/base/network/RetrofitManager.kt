@@ -1,5 +1,7 @@
 package com.guoqiang.base.network
 
+import android.os.Build
+import com.guoqiang.base.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -34,7 +36,10 @@ object RetrofitManager {
             if (retrofit != null) return retrofit
         }
 
-        val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+        val logger = HttpLoggingInterceptor().apply {
+            level =
+                if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        }
 
         val client = OkHttpClient.Builder()
             .addInterceptor(logger)

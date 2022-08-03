@@ -41,12 +41,12 @@ fun Activity.startActivityForResult(clazz: Class<*>, requestCode: Int, bundle: B
 
 fun Activity.startActivityNewTask(clazz: Class<*>) {
     val intent = Intent(this, clazz)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     startActivity(intent)
 }
 
-fun Activity.toast(message: String) {
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+fun Activity.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(this, message, duration).show()
 }
 
 fun Activity.customToast(message: String) {

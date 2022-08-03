@@ -30,6 +30,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    resourcePrefix = 'base_'
 }
 
 dependencies {

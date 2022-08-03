@@ -9,5 +9,7 @@ class Constants private constructor(){
 
     companion object{
         const val URL = ""
+
+        const val PATH_LOGIN: String = "/user/LoginActivity"
     }
 }

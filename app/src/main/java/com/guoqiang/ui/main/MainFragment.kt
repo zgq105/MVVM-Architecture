@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.guoqiang.MainActivity3
 import com.guoqiang.R
 import com.guoqiang.base.common.BaseFragment
+import com.guoqiang.business.common.Constants
 import com.guoqiang.databinding.FragmentMainBinding
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
@@ -21,7 +22,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private fun initListener() {
         binding.message.setOnClickListener {
-            ARouter.getInstance().build(MainActivity3.PATH).navigation()
+            //ARouter.getInstance().build(MainActivity3.PATH).navigation()
+            ARouter.getInstance().build(Constants.PATH_LOGIN).navigation()
         }
     }
 
