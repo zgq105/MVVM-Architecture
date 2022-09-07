@@ -65,4 +65,12 @@ dependencies {
 //    api "com.google.dagger:hilt-android:$hilt_version"
 //    kapt "com.google.dagger:hilt-android-compiler:$hilt_compiler_version"
 
+    api "io.github.scwang90:refresh-layout-kernel:$smart_refresh_layout_version" //核心必须依赖
+    api "io.github.scwang90:refresh-header-classics:$smart_refresh_layout_version" //经典刷新头
+    api "io.github.scwang90:refresh-footer-classics:$smart_refresh_layout_version" //经典加载
+    api "io.github.scwang90:refresh-header-material:$smart_refresh_layout_version"//谷歌刷新头
+
+    // https://mvnrepository.com/artifact/io.github.cymchad/BaseRecyclerViewAdapterHelper
+    api "io.github.cymchad:BaseRecyclerViewAdapterHelper:$rv_adapter"
+
 }

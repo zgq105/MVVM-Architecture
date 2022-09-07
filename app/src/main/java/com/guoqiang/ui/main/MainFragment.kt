@@ -1,18 +1,17 @@
 package com.guoqiang.ui.main
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.alibaba.android.arouter.launcher.ARouter
-import com.guoqiang.MainActivity3
-import com.guoqiang.R
+import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
+import com.guoqiang.Base64Utils
 import com.guoqiang.base.common.BaseFragment
-import com.guoqiang.business.common.Constants
 import com.guoqiang.databinding.FragmentMainBinding
+import java.text.SimpleDateFormat
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
 
@@ -23,7 +22,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     private fun initListener() {
         binding.message.setOnClickListener {
             //ARouter.getInstance().build(MainActivity3.PATH).navigation()
-            ARouter.getInstance().build(Constants.PATH_LOGIN).navigation()
+            //ARouter.getInstance().build(Constants.PATH_LOGIN).navigation()
+            test2()
         }
     }
 
@@ -38,5 +38,24 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     override fun initData() {
         initListener()
     }
+
+    private fun test() {
+        val pushInfoBean = PushInfoBean("http://www.baidu.com", "123", "1072699480150020096", 4)
+        val ext = Base64Utils.encode(Gson().toJson(pushInfoBean).toByteArray())
+        val intent = Intent()
+        val componentName = ComponentName(
+            "com.afanticar.aivideo",
+            "com.afanticar.common.Jpush.JpushRouterActivity"
+        )
+        intent.putExtra("ext", ext)
+        intent.component = componentName
+        startActivity(intent)
+    }
+
+    private fun test2() {
+
+    }
+
+    class PushInfoBean(val sourceUrl: String?, val msgId: String?, val logId: String?, @SerializedName("type") val type: Int = 0)
 
 }

@@ -1,7 +1,13 @@
 package com.guoqiang.base.common
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.PagingSource
+import com.guoqiang.base.common.paging.BasePagingSource
 import com.guoqiang.base.network.BaseResponse
 import com.guoqiang.base.network.DataState
+import com.guoqiang.base.network.PageWrapperDto
 import com.guoqiang.base.network.StatusCode
 import com.guoqiang.base.utils.LogUtil
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +24,7 @@ open class BaseRepository {
 
     companion object {
         private const val TAG = "BaseRepository"
+        private const val PAGE_SIZE = 25
     }
 
     /**
@@ -72,6 +79,7 @@ open class BaseRepository {
         }
     }
 
+
     private fun <T> isEmpty(baseResp: BaseResponse<T>): Boolean {
         if (baseResp.data == null || (baseResp.data is List<*> && (baseResp.data as List<*>).isEmpty())) {
             return true
@@ -93,4 +101,5 @@ open class BaseRepository {
             baseResp.dataState = DataState.STATE_FAILED
         }
     }
+
 }

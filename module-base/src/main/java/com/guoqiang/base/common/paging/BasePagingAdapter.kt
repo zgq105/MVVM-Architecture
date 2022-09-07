@@ -72,10 +72,10 @@ abstract class BasePagingAdapter<T : Any>(private var diffCallback: DiffUtil.Ite
      * ItemView的辅助类
      */
     class ItemHelper(private val holder: BasePagingAdapter<*>.BaseViewHolder) {
-        private val itemView = holder.itemView
+        val itemView = holder.itemView
         private val viewCache = SparseArray<View>()
 
-        private fun findViewById(viewId: Int): View {
+        fun findViewById(viewId: Int): View {
             var view = viewCache.get(viewId)
             if (view == null) {
                 view = itemView.findViewById(viewId)

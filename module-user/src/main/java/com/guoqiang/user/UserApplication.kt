@@ -9,7 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
  * date: 2022/7/29 7:07 下午
  * destcription:
  */
-//@HiltAndroidApp
+@HiltAndroidApp
 class UserApplication : Application() {
 
     override fun onCreate() {

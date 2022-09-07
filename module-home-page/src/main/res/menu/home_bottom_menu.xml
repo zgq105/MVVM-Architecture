@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="@string/home_menu_home"
+        android:icon="@mipmap/ic_home" />
+    <item android:id="@+id/action_car_circle"
+        android:title="@string/home_menu_car_circle"
+        android:icon="@mipmap/ic_car_circle" />
+    <item android:id="@+id/action_select_car"
+        android:title="@string/home_menu_select_car"
+        android:icon="@mipmap/ic_select_car" />
+    <item android:id="@+id/action_used_car"
+        android:title="@string/home_menu_used_car"
+        android:icon="@mipmap/ic_used_car" />
+    <item android:id="@+id/action_mime"
+        android:title="@string/home_menu_mime"
+        android:icon="@mipmap/ic_mime" />
+</menu>

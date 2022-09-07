@@ -5,11 +5,16 @@
       <map>
         <entry key="../../.gradle/caches/transforms-3/34e1a1a860a9c00a62a51b0cb575b4ff/transformed/material-1.4.0/res/drawable/design_fab_background.xml" value="0.145" />
         <entry key="../../.gradle/caches/transforms-3/34e1a1a860a9c00a62a51b0cb575b4ff/transformed/material-1.4.0/res/drawable/ic_mtrl_checked_circle.xml" value="0.145" />
+        <entry key="../../.gradle/caches/transforms-3/76b05cfb49df9fda20e78fcbce03951e/transformed/jetified-BaseRecyclerViewAdapterHelper-4.0.0-alpha8/res/layout/brvah_leading_load_more.xml" value="0.1" />
+        <entry key="../../.gradle/caches/transforms-3/99e309e25dda7d065b4dec564bd16dc3/transformed/jetified-BaseRecyclerViewAdapterHelper-4.0.0-alpha6/res/layout/brvah_leading_load_more.xml" value="0.1" />
+        <entry key="../../.gradle/caches/transforms-3/99e309e25dda7d065b4dec564bd16dc3/transformed/jetified-BaseRecyclerViewAdapterHelper-4.0.0-alpha6/res/layout/brvah_trailing_load_more.xml" value="0.1" />
         <entry key="Module-Base/src/main/res/drawable/custom_toast_backgroud_box.xml" value="0.164" />
         <entry key="Module-Base/src/main/res/drawable/shape_load_bg.xml" value="0.109" />
         <entry key="Module-Base/src/main/res/layout/layout_loading_view.xml" value="0.23802083333333332" />
         <entry key="Module-Base/src/main/res/layout/toast_layout.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/drawable/bg_template_search.xml" value="0.217" />
+        <entry key="app/src/main/res/drawable/cricle_progress_drawable_bg.xml" value="0.1175" />
+        <entry key="app/src/main/res/drawable/hori_progress_drawable_bg.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.217" />
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.217" />
         <entry key="app/src/main/res/drawable/ic_menu_gallery.xml" value="0.217" />
@@ -33,6 +38,20 @@
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/menu/main_activity4.xml" value="0.23802083333333332" />
         <entry key="module-base/src/main/res/layout/fragment_blank.xml" value="0.22395833333333334" />
+        <entry key="module-home-page/src/main/res/layout/activity_home.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_car_circle.xml" value="0.17037037037037037" />
+        <entry key="module-home-page/src/main/res/layout/fragment_car_cricle.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_focus_on.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_home_page.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_live.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_mime.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_recommend.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_select_car.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_short_video.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/fragment_used_car.xml" value="0.23802083333333332" />
+        <entry key="module-home-page/src/main/res/layout/layout_car_cricle_list_item.xml" value="0.335" />
+        <entry key="module-home-page/src/main/res/menu/home_bottom_menu.xml" value="0.23802083333333332" />
         <entry key="module-user/src/main/res/layout/activity_login.xml" value="0.1" />
       </map>
     </option>

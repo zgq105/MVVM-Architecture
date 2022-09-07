@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/module-base" />
             <option value="$PROJECT_DIR$/module-bussess-common" />
+            <option value="$PROJECT_DIR$/module-home-page" />
             <option value="$PROJECT_DIR$/module-user" />
           </set>
         </option>
