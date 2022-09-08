@@ -62,7 +62,5 @@ android {
         kapt "com.google.dagger:hilt-android-compiler:$hilt_compiler_version"
         implementation "com.google.dagger:hilt-android:$hilt_version"
    //aaaa
-
-        //bbbb
     }
 }
