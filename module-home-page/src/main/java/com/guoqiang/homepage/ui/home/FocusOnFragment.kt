@@ -27,4 +27,8 @@ class FocusOnFragment : BaseFragment<FragmentFocusOnBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

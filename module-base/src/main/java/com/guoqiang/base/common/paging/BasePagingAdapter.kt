@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @author fuusy
  * @instruction：Paging3Adapter的公共类，主要减少adapter的冗余代码。
  */
-abstract class BasePagingAdapter<T : Any>(private var diffCallback: DiffUtil.ItemCallback<T>) :
+abstract class BasePagingAdapter<T : Any>(diffCallback: DiffUtil.ItemCallback<T>) :
     PagingDataAdapter<T, RecyclerView.ViewHolder>(diffCallback) {
 
     companion object {
@@ -71,7 +71,7 @@ abstract class BasePagingAdapter<T : Any>(private var diffCallback: DiffUtil.Ite
     /**
      * ItemView的辅助类
      */
-    class ItemHelper(private val holder: BasePagingAdapter<*>.BaseViewHolder) {
+    class ItemHelper(holder: BasePagingAdapter<*>.BaseViewHolder) {
         val itemView = holder.itemView
         private val viewCache = SparseArray<View>()
 

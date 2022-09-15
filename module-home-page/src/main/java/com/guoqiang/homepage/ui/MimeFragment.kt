@@ -27,4 +27,8 @@ class MimeFragment : BaseFragment<FragmentMimeBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

@@ -36,6 +36,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     override fun initData() {
+
+    }
+
+    override fun initView() {
         initListener()
     }
 

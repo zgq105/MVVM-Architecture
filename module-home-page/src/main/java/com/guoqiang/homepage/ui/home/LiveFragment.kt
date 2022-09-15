@@ -27,4 +27,8 @@ class LiveFragment : BaseFragment<FragmentLiveBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

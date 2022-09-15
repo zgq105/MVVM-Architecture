@@ -27,4 +27,8 @@ class ShortVideoFragment : BaseFragment<FragmentShortVideoBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

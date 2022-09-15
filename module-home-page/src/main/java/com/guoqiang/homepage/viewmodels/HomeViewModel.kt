@@ -18,24 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repo: HomeRepository) : BaseViewModel() {
 
-    val carCircleListLiveData: LiveData<BaseResponse<PageWrapperDto<CarCircle>>>
-        get() = _carCircleListLiveData
-
-    private var _carCircleListLiveData = MutableLiveData<BaseResponse<PageWrapperDto<CarCircle>>>()
-
-
     suspend fun getCarCircleList(): Flow<PagingData<CarCircle>> {
         return repo.getCarCircleList().cachedIn(viewModelScope)
     }
-
-
-    fun test() {
-        viewModelScope.launch {
-            val response = repo.getCarCircleList(1, 10)
-            _carCircleListLiveData.value = response
-        }
-    }
-
-
 
 }

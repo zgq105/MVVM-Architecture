@@ -1,6 +1,8 @@
 package com.guoqiang.homepage.ui
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -45,8 +47,11 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
         return FragmentCarCircleBinding.inflate(layoutInflater)
     }
 
-    override fun initData() {
+    override fun initView() {
         val refreshLayout = binding.refreshLayout
+        binding.recyclerview.layoutManager = LinearLayoutManager(this.requireContext())
+        binding.recyclerview.adapter = adapter
+
         refreshLayout.setOnRefreshListener {
             LogUtil.debug(TAG, "setOnRefreshListener")
             adapter.refresh()
@@ -55,19 +60,21 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
             LogUtil.debug(TAG, "setOnLoadMoreListener")
         }
 
-//        homeViewModel.carCircleListLiveData.observe(viewLifecycleOwner) {
-//            refreshLayout.finishRefresh()
-//        }
-        //refreshLayout.autoRefresh()
+        adapter.setOnItemClick {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:13435666677"))
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+    }
 
-        binding.recyclerview.layoutManager = LinearLayoutManager(this.requireContext())
-        binding.recyclerview.adapter = adapter
-
+    override fun initData() {
+        LogUtil.debug(TAG,"initData")
         loadData()
+        loadStatesListener()
     }
 
     private fun loadData() {
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenCreated {
             homeViewModel.getCarCircleList().collectLatest {
                 LogUtil.debug(TAG, it.toString())
                 adapter.submitData(it)
@@ -76,7 +83,24 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
         }
     }
 
+    private fun loadStatesListener() {
+        lifecycleScope.launchWhenCreated {
+            adapter.addLoadStateListener {
+                LogUtil.debug(TAG, "addLoadStateListener:" + it.source)
+            }
+            adapter.loadStateFlow.collect { loadState ->
+                LogUtil.debug(TAG, "loadStateFlow:$loadState")
+            }
+        }
+    }
+
     class CarCircleAdapter : BasePagingAdapter<CarCircle>(diffCallback) {
+
+        private var onItemClick: (() -> Unit)? = null
+
+        fun setOnItemClick(onItemClick: () -> Unit) {
+            this.onItemClick = onItemClick
+        }
 
         companion object {
             private val diffCallback = object : DiffUtil.ItemCallback<CarCircle>() {
@@ -95,7 +119,7 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
         }
 
         override fun onItemClick(data: CarCircle?) {
-
+            onItemClick?.invoke()
         }
 
         override fun bindData(helper: ItemHelper, data: CarCircle?) {

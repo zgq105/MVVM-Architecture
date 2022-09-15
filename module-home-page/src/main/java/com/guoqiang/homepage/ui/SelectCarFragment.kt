@@ -25,4 +25,8 @@ class SelectCarFragment : BaseFragment<FragmentSelectCarBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

@@ -27,4 +27,8 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

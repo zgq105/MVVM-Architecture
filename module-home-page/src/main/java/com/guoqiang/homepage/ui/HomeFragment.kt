@@ -52,6 +52,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initData() {
+
+    }
+
+    override fun initView() {
         val viewPager = binding.vpContainer
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int {
@@ -69,13 +73,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
         viewPager.isUserInputEnabled = false
-
-//        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-//            override fun onPageSelected(position: Int) {
-//                super.onPageSelected(position)
-//                binding.bnvNavigation.menu.getItem(position).isChecked = true
-//            }
-//        })
 
         binding.bnvNavigation.setOnItemSelectedListener {
             when (it.itemId) {

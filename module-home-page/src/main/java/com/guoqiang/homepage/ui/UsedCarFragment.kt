@@ -26,4 +26,8 @@ class UsedCarFragment : BaseFragment<FragmentUsedCarBinding>() {
 
     }
 
+    override fun initView() {
+
+    }
+
 }

@@ -36,6 +36,10 @@ class HomePageFragment : BaseFragment<FragmentHomePageBinding>() {
     }
 
     override fun initData() {
+
+    }
+
+    override fun initView() {
         homeTabAdapter = HomeTabAdapter(this)
         binding.vpPager.adapter = homeTabAdapter
         TabLayoutMediator(binding.tabLayout, binding.vpPager) { tab, position ->
