@@ -1,31 +1,39 @@
 package com.guoqiang.homepage.ui
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.guoqiang.base.common.BaseFragment
 import com.guoqiang.base.common.paging.BasePagingAdapter
+import com.guoqiang.base.common.paging.BasePagingFooterAdapter
 import com.guoqiang.base.utils.LogUtil
+import com.guoqiang.base.utils.extensions.visible
 import com.guoqiang.base.utils.load
+import com.guoqiang.business.common.utils.hideNetworkError
+import com.guoqiang.business.common.utils.showNetworkError
 import com.guoqiang.homepage.R
 import com.guoqiang.homepage.data.dto.CarCircle
 import com.guoqiang.homepage.databinding.FragmentCarCircleBinding
-import com.guoqiang.homepage.databinding.LayoutCarCricleListItemBinding
 import com.guoqiang.homepage.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 /**
  * author: zgq
@@ -39,6 +47,8 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
 
     private val adapter = CarCircleAdapter()
 
+    private val pagingFooterAdapter = BasePagingFooterAdapter()
+
     override fun onCreateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +60,8 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
     override fun initView() {
         val refreshLayout = binding.refreshLayout
         binding.recyclerview.layoutManager = LinearLayoutManager(this.requireContext())
-        binding.recyclerview.adapter = adapter
+        binding.recyclerview.adapter =
+            adapter.withLoadStateFooter(pagingFooterAdapter)
 
         refreshLayout.setOnRefreshListener {
             LogUtil.debug(TAG, "setOnRefreshListener")
@@ -65,34 +76,50 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
+
+        pagingFooterAdapter.setOnItemClick {
+            adapter.retry()
+        }
     }
 
     override fun initData() {
-        LogUtil.debug(TAG,"initData")
+        LogUtil.debug(TAG, "initData")
         loadData()
         loadStatesListener()
     }
 
     private fun loadData() {
+
         lifecycleScope.launchWhenCreated {
+
             homeViewModel.getCarCircleList().collectLatest {
                 LogUtil.debug(TAG, it.toString())
                 adapter.submitData(it)
                 binding.refreshLayout.finishRefresh()
+                binding.recyclerview.scrollToPosition(0)
             }
         }
     }
 
     private fun loadStatesListener() {
         lifecycleScope.launchWhenCreated {
-            adapter.addLoadStateListener {
-                LogUtil.debug(TAG, "addLoadStateListener:" + it.source)
-            }
-            adapter.loadStateFlow.collect { loadState ->
+            adapter.loadStateFlow.collectLatest { loadState ->
                 LogUtil.debug(TAG, "loadStateFlow:$loadState")
+                when (loadState.refresh) {
+                    is LoadState.Loading -> showLoading()
+                    is LoadState.NotLoading -> {
+                        dismissLoading()
+                        hideNetworkError()
+                    }
+                    is LoadState.Error -> {
+                        dismissLoading()
+                        showNetworkError()
+                    }
+                }
             }
         }
     }
+
 
     class CarCircleAdapter : BasePagingAdapter<CarCircle>(diffCallback) {
 

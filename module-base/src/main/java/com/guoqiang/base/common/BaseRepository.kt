@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
-import com.guoqiang.base.common.paging.BasePagingSource
 import com.guoqiang.base.network.BaseResponse
 import com.guoqiang.base.network.DataState
 import com.guoqiang.base.network.PageWrapperDto

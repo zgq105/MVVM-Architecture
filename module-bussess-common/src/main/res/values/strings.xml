@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">module-bussess-common</string>
+    <string name="com_app_name">module-bussess-common</string>
+    <string name="com_network_error">网络异常</string>
+    <string name="com_no_data">暂无数据</string>
+
 </resources>

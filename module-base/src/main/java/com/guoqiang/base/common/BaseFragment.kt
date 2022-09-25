@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.guoqiang.base.utils.LogUtil
@@ -16,8 +18,8 @@ import com.guoqiang.base.widget.LoadingDialog
  * destcription:
  */
 abstract class BaseFragment<V : ViewBinding> : Fragment() {
-    protected lateinit var binding: V
-    private lateinit var loadingDialog: LoadingDialog
+    lateinit var binding: V
+    private val loadingDialog by lazy { LoadingDialog(this.requireContext(), false) }
     private var rootView: View? = null
 
     override fun onCreateView(
@@ -36,7 +38,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadingDialog = LoadingDialog(this.requireContext(), false)
         initData()
     }
 
@@ -55,7 +56,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
      * show 加载中
      */
     protected fun showLoading() {
-        loadingDialog.showDialog(this.requireContext(), false)
+        loadingDialog?.showDialog(this.requireContext(), false)
     }
 
     /**
@@ -69,6 +70,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
      * dismiss loading dialog
      */
     protected fun dismissLoading() {
-        loadingDialog.dismissDialog()
+        loadingDialog?.dismissDialog()
     }
 }

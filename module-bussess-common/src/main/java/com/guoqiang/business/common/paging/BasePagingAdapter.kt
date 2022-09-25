@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 /**
- * @date：2021/5/17
- * @author fuusy
- * @instruction：Paging3Adapter的公共类，主要减少adapter的冗余代码。
+ * author: zgq
+ * date: 2022/7/13 10:01 下午
+ * destcription:
  */
 abstract class BasePagingAdapter<T : Any>(diffCallback: DiffUtil.ItemCallback<T>) :
     PagingDataAdapter<T, RecyclerView.ViewHolder>(diffCallback) {

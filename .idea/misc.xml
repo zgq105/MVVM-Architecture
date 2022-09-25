@@ -37,7 +37,13 @@
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/menu/main_activity4.xml" value="0.23802083333333332" />
+        <entry key="module-base/src/main/res/drawable/shape_load_bg.xml" value="0.1615" />
         <entry key="module-base/src/main/res/layout/fragment_blank.xml" value="0.22395833333333334" />
+        <entry key="module-base/src/main/res/layout/layout_loading_view.xml" value="0.23802083333333332" />
+        <entry key="module-bussess-common/src/main/res/layout/layout_common_empty.xml" value="0.23802083333333332" />
+        <entry key="module-bussess-common/src/main/res/layout/layout_network_error.xml" value="0.23802083333333332" />
+        <entry key="module-bussess-common/src/main/res/layout/layout_network_view.xml" value="0.23802083333333332" />
+        <entry key="module-bussess-common/src/main/res/layout/layout_paging_bottom.xml" value="0.23802083333333332" />
         <entry key="module-home-page/src/main/res/layout/activity_home.xml" value="0.23802083333333332" />
         <entry key="module-home-page/src/main/res/layout/fragment_car_circle.xml" value="0.17037037037037037" />
         <entry key="module-home-page/src/main/res/layout/fragment_car_cricle.xml" value="0.23802083333333332" />
@@ -51,6 +57,7 @@
         <entry key="module-home-page/src/main/res/layout/fragment_short_video.xml" value="0.23802083333333332" />
         <entry key="module-home-page/src/main/res/layout/fragment_used_car.xml" value="0.23802083333333332" />
         <entry key="module-home-page/src/main/res/layout/layout_car_cricle_list_item.xml" value="0.335" />
+        <entry key="module-home-page/src/main/res/layout/layout_network_ui.xml" value="0.23802083333333332" />
         <entry key="module-home-page/src/main/res/menu/home_bottom_menu.xml" value="0.23802083333333332" />
         <entry key="module-user/src/main/res/layout/activity_login.xml" value="0.1" />
       </map>

@@ -42,6 +42,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    resourcePrefix = 'com_'
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -72,5 +76,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/io.github.cymchad/BaseRecyclerViewAdapterHelper
     api "io.github.cymchad:BaseRecyclerViewAdapterHelper:$rv_adapter"
+
+    implementation project(path: ':module-base')
 
 }

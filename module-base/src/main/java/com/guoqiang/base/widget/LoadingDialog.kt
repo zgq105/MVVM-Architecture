@@ -29,7 +29,7 @@ class LoadingDialog : Dialog {
         )
 
         animation.duration = 2000
-        animation.repeatCount = 10
+        animation.repeatCount = Animation.INFINITE
         animation.fillAfter = true
         imageView.startAnimation(animation)
 
