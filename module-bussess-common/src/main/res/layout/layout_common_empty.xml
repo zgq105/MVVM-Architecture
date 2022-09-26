@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="ResourceName"
-    android:id="@+id/cl_common_network_error">
+    android:id="@+id/cl_common_empty_view">
 
     <ImageView
         android:id="@+id/iv_empty_pic"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_error_tip"
+        android:id="@+id/tv_empty_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="123dp"

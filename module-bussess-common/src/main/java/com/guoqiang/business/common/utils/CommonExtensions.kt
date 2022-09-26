@@ -20,6 +20,7 @@ import androidx.viewbinding.ViewBinding
 import com.guoqiang.base.common.BaseFragment
 import com.guoqiang.base.utils.extensions.gone
 import com.guoqiang.business.common.R
+import com.guoqiang.business.common.databinding.LayoutCommonEmptyBinding
 import com.guoqiang.business.common.databinding.LayoutNetworkErrorBinding
 
 /**
@@ -46,7 +47,25 @@ fun BaseFragment<*>.showNetworkError() {
     }
 }
 
-fun BaseFragment<*>.hideNetworkError() {
+fun BaseFragment<*>.showEmptyView() {
+    val viewRoot = binding.root
+    val addedEmptyView = viewRoot.findViewById<View>(R.id.cl_common_empty_view)
+    if (addedEmptyView != null && addedEmptyView.isVisible) {
+        return
+    }
+    if (viewRoot is ConstraintLayout) {
+        val emptyView = LayoutCommonEmptyBinding.inflate(layoutInflater).root
+        val lp = viewRoot.children.first()?.layoutParams as? ConstraintLayout.LayoutParams
+        lp?.let {
+            lp.width = ConstraintLayout.LayoutParams.MATCH_PARENT
+            lp.height = ConstraintLayout.LayoutParams.MATCH_PARENT
+            emptyView.layoutParams = lp
+        }
+        viewRoot.addView(emptyView)
+    }
+}
+
+private fun BaseFragment<*>.hideNetworkError() {
     val viewRoot = binding.root
     if (viewRoot is ConstraintLayout) {
         val errorView = viewRoot.findViewById<View>(R.id.cl_common_network_error)
@@ -54,4 +73,19 @@ fun BaseFragment<*>.hideNetworkError() {
             viewRoot.removeView(it)
         }
     }
+}
+
+private fun BaseFragment<*>.hideEmptyError() {
+    val viewRoot = binding.root
+    if (viewRoot is ConstraintLayout) {
+        val errorView = viewRoot.findViewById<View>(R.id.cl_common_empty_view)
+        errorView?.let {
+            viewRoot.removeView(it)
+        }
+    }
+}
+
+fun BaseFragment<*>.resetNormal() {
+    hideNetworkError()
+    hideEmptyError()
 }

@@ -49,7 +49,6 @@ class HomePageFragment : BaseFragment<FragmentHomePageBinding>() {
 
     override fun onResume() {
         super.onResume()
-        //test()
 
     }
 
@@ -80,43 +79,7 @@ class HomePageFragment : BaseFragment<FragmentHomePageBinding>() {
         }
     }
 
-    private fun test() {
-        val baseResponse = BaseResponse<PageWrapperDto<CarCircle>>()
-        baseResponse.code = 200
-        baseResponse.message = "success"
-        val list = arrayListOf<CarCircle>()
-        for (i in 0..9) {
-            list.add(
-                CarCircle(
-                    i.toString(),
-                    "https://img-home.csdnimg.cn/images/20210114022819.png",
-                    "zgq",
-                    100,
-                    200,
-                    "标题$i",
-                    "内容内容$i",
-                    arrayListOf(
-                        "https://himg.bdimg.com/sys/portrait/item/wise.1.37b2d18b.kaALZ4D8kVni-NSYR6B2Bw.jpg?time=3426&tieba_portrait_time=3426",
-                        "https://himg.bdimg.com/sys/portrait/item/wise.1.37b2d18b.kaALZ4D8kVni-NSYR6B2Bw.jpg?time=3426&tieba_portrait_time=3426"
-                    ),
-                    3,
-                    35,
-                    45,
-                    56,
-                    67
-                )
-            )
-        }
-        val pageWrapperDto = PageWrapperDto<CarCircle>(1, 5, 10, false, true, 50, list)
-        baseResponse.data = pageWrapperDto
 
-        val json = GsonBuilder().create().toJson(baseResponse)
-        Log.d("zgq", json)
-
-        val jsonObj = GsonBuilder().create().fromJson<BaseResponse<PageWrapperDto<CarCircle>>>(json,object :TypeToken<BaseResponse<PageWrapperDto<CarCircle>>>(){}.type)
-        Log.d("zgq", jsonObj.toString())
-
-    }
 
 
 }

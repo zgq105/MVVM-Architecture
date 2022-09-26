@@ -26,7 +26,8 @@ import com.guoqiang.base.common.paging.BasePagingFooterAdapter
 import com.guoqiang.base.utils.LogUtil
 import com.guoqiang.base.utils.extensions.visible
 import com.guoqiang.base.utils.load
-import com.guoqiang.business.common.utils.hideNetworkError
+import com.guoqiang.business.common.utils.resetNormal
+import com.guoqiang.business.common.utils.showEmptyView
 import com.guoqiang.business.common.utils.showNetworkError
 import com.guoqiang.homepage.R
 import com.guoqiang.homepage.data.dto.CarCircle
@@ -44,9 +45,7 @@ import kotlinx.coroutines.flow.collectLatest
 class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
 
     private val homeViewModel: HomeViewModel by viewModels()
-
     private val adapter = CarCircleAdapter()
-
     private val pagingFooterAdapter = BasePagingFooterAdapter()
 
     override fun onCreateBinding(
@@ -64,11 +63,7 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
             adapter.withLoadStateFooter(pagingFooterAdapter)
 
         refreshLayout.setOnRefreshListener {
-            LogUtil.debug(TAG, "setOnRefreshListener")
             adapter.refresh()
-        }
-        refreshLayout.setOnLoadMoreListener {
-            LogUtil.debug(TAG, "setOnLoadMoreListener")
         }
 
         adapter.setOnItemClick {
@@ -89,9 +84,7 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
     }
 
     private fun loadData() {
-
         lifecycleScope.launchWhenCreated {
-
             homeViewModel.getCarCircleList().collectLatest {
                 LogUtil.debug(TAG, it.toString())
                 adapter.submitData(it)
@@ -109,7 +102,10 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
                     is LoadState.Loading -> showLoading()
                     is LoadState.NotLoading -> {
                         dismissLoading()
-                        hideNetworkError()
+                        resetNormal()
+                        if (adapter.itemCount == 0) {
+                            showEmptyView()
+                        }
                     }
                     is LoadState.Error -> {
                         dismissLoading()
@@ -123,9 +119,9 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
 
     class CarCircleAdapter : BasePagingAdapter<CarCircle>(diffCallback) {
 
-        private var onItemClick: (() -> Unit)? = null
+        private var onItemClick: ((CarCircle?) -> Unit)? = null
 
-        fun setOnItemClick(onItemClick: () -> Unit) {
+        fun setOnItemClick(onItemClick: (CarCircle?) -> Unit) {
             this.onItemClick = onItemClick
         }
 
@@ -146,7 +142,7 @@ class CarCircleFragment : BaseFragment<FragmentCarCircleBinding>() {
         }
 
         override fun onItemClick(data: CarCircle?) {
-            onItemClick?.invoke()
+            onItemClick?.invoke(data)
         }
 
         override fun bindData(helper: ItemHelper, data: CarCircle?) {

@@ -18,7 +18,6 @@ abstract class BasePagingSource<Value : Any> : PagingSource<Int, Value>(), Pagin
         val page = params.key ?: INIT_PAGE_INDEX
         return try {
             val response = loadData(page)
-            Log.d("zgq", GsonBuilder().create().toJson(response))
             if (response.isSuccess) {
                 if (response.data != null && response.data!!.list.isNotEmpty()) {
                     LoadResult.Page(
