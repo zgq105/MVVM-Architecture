@@ -54,4 +54,6 @@ dependencies {
     api "com.google.code.gson:gson:$gson_version"
     api "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
 
+    api "io.github.jeremyliao:live-event-bus-x:$live_event_bus_version"
+
 }
